@@ -3,7 +3,7 @@
     "name": "Charades-App-Expo-Review",
     "slug": "Charades-App-Expo-Review",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "landscape",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
