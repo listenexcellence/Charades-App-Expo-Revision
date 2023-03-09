@@ -2,7 +2,7 @@ import { ImageBackground, StyleSheet, Text, View, Image, TouchableOpacity, Alert
 import React from 'react'
 import { useFonts } from 'expo-font';
 
-const Home = () => {
+const Home = ({ navigation }) => {
     const image = require('../../assets/background.png');
     const text = require('../../assets/text1.png'); 
     const [loaded] = useFonts({
@@ -22,7 +22,7 @@ const Home = () => {
             </View>
             <View style={styles.container1}>
                 <View style={styles.buttonCon}>
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity onPress={() => navigation.navigate('Dashboard')} style={styles.button}>
                         <Text style={styles.text}>Play</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => alert('Hello Bigga')} style={styles.button}>
@@ -38,7 +38,7 @@ const Home = () => {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.container3}>
-                  <Text>2023</Text>
+                  <Text style={styles.text1}>© 2023</Text>
                 </View>
             </View>
             
@@ -59,19 +59,17 @@ const styles = StyleSheet.create({
         height: 150,
         width: '80%',
         flexDirection: 'column',
-        justifyContent: 'space-around'
+        justifyContent: 'space-between',
       },
       container3: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        color: '#fff',
-        borderColor: '#fff',
-        borderWidth: 2
+        justifyContent: 'flex-end',
+        alignItems: 'flex-end',
+        paddingTop: 15,
       },
       buttonCon: {
         flexDirection: 'row',
         justifyContent: 'space-around',
+        paddingBottom: 11,
       },
       button: {
         backgroundColor: '#205885',
@@ -97,4 +95,11 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textTransform: 'uppercase',
     },
+    text1: {
+      color: '#fff',
+      fontFamily: 'MontserratBold',
+      fontSize: 15,
+      textTransform: 'uppercase',
+      opacity: 0.7,
+  },
 })
