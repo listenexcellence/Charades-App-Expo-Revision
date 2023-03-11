@@ -8,7 +8,7 @@ export default [
         img: require('../../assets/gameP.png'),
     },
     {
-        id: 1,
+        id: 3,
         img: require('../../assets/correct.png'),
     },
 ]

@@ -1,10 +1,16 @@
-import { ImageBackground, StyleSheet, Text, View, Image, TouchableOpacity, Alert } from 'react-native'
+import { ImageBackground, StyleSheet, Text, View, Image, TouchableOpacity, Alert, Dimensions } from 'react-native'
 import React from 'react'
 import { useFonts } from 'expo-font';
 
+const {width, height} = Dimensions.get('screen');
+
 const Home = ({ navigation }) => {
-    const image = require('../../assets/background.png');
+    const image = require('../../assets/backgroundd.png');
     const text = require('../../assets/text1.png'); 
+    const icon = require('../../assets/play.png'); 
+    const icon2 = require('../../assets/howT.png'); 
+    const icon3 = require('../../assets/sup.png'); 
+    const icon4 = require('../../assets/rate.png'); 
     const [loaded] = useFonts({
       Montserrat: require('./../../assets/fonts/Montserrat-Regular.ttf'),
       MontserratBold: require('./../../assets/fonts/Montserrat-Bold.ttf'),
@@ -17,32 +23,36 @@ const Home = ({ navigation }) => {
     }
   return (
     <ImageBackground source={image} style={styles.container}>
-            <View style={styles.mid}>
+       <View style={styles.mid}>
                 <Image source={text} style={styles.mainText1}/>
-            </View>
-            <View style={styles.container1}>
+        </View>
+           <View style={styles.container1}>
                 <View style={styles.buttonCon}>
                     <TouchableOpacity onPress={() => navigation.navigate('Dashboard')} style={styles.button}>
-                        <Text style={styles.text}>Play</Text>
+                      <Image source={icon} style={styles.iconImg} />
+                        <Text style={styles.text}>Play Now</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => alert('Hello Bigga')} style={styles.button}>
+                    <TouchableOpacity onPress={() => navigation.navigate('howto1')} style={styles.button}>
+                    <Image source={icon2} style={styles.iconImg} />
                         <Text style={styles.text}>How To Play</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.buttonCon}>
                     <TouchableOpacity style={styles.button}>
+                    <Image source={icon3} style={styles.iconImg} />
                         <Text style={styles.text}>Support</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.button}>
+                    <Image source={icon4} style={styles.iconImg} />
                         <Text style={styles.text}>Rate The Game</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.container3}>
                   <Text style={styles.text1}>© 2023</Text>
                 </View>
-            </View>
+           </View>
             
-        </ImageBackground>
+    </ImageBackground>
   )
 }
 
@@ -50,7 +60,8 @@ export default Home
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        width,
+        height,
         alignItems: 'center',
         justifyContent: 'center',
         color: '#fff',
@@ -60,6 +71,7 @@ const styles = StyleSheet.create({
         width: '80%',
         flexDirection: 'column',
         justifyContent: 'space-between',
+        paddingTop: 5,
       },
       container3: {
         justifyContent: 'flex-end',
@@ -69,19 +81,24 @@ const styles = StyleSheet.create({
       buttonCon: {
         flexDirection: 'row',
         justifyContent: 'space-around',
-        paddingBottom: 11,
+        paddingBottom: 12,
       },
       button: {
-        backgroundColor: '#205885',
-        width: '47.5%',
-        paddingVertical: 20,
-        borderRadius: 5,
+        display: 'flex',
+        backgroundColor: '#D18A1A',
+        borderColor: 'rgba(255, 250, 189, 0.6)',
+        borderWidth: '6px',
+        width: '46.5%',
+        paddingVertical: 10,
+        borderRadius: 15,
         alignItems: 'center',
         shadowColor: 'rgba(80, 80, 80, 0.18)',
         shadowOpacity: 1,
         elevation: 6,
         shadowRadius: 15 ,
         shadowOffset : { width: 1, height: 13},
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
       },
       mainText1: {
         resizeMode: 'contain',
@@ -101,5 +118,10 @@ const styles = StyleSheet.create({
       fontSize: 15,
       textTransform: 'uppercase',
       opacity: 0.7,
+  },
+  iconImg: {
+    width: 35,
+    height: 35,
+    resizeMode: 'contain',
   },
 })
