@@ -7,17 +7,22 @@ const Drawer = createDrawerNavigator();
 
 const Dashboard = () => {
   return (
-      <Drawer.Navigator>
-        <Drawer.Screen 
-          key={'decks'}
-          name={' '}
-          component={Decks}
-          options={{headerShown:false}}
-           />
-      </Drawer.Navigator>
+      <View>
+        <Text>Dashboard</Text>
+      </View>
   )
 }
 
 export default Dashboard
 
 const styles = StyleSheet.create({})
+
+
+// <Drawer.Navigator>
+      //   <Drawer.Screen 
+      //     key={'decks'}
+      //     name={' '}
+      //     component={Decks}
+      //     options={{headerShown:false}}
+      //      />
+      // </Drawer.Navigator>

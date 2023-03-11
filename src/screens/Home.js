@@ -28,7 +28,7 @@ const Home = ({ navigation }) => {
         </View>
            <View style={styles.container1}>
                 <View style={styles.buttonCon}>
-                    <TouchableOpacity onPress={() => navigation.navigate('Dashboard')} style={styles.button}>
+                    <TouchableOpacity onPress={() => navigation.navigate('Decks')} style={styles.button}>
                       <Image source={icon} style={styles.iconImg} />
                         <Text style={styles.text}>Play Now</Text>
                     </TouchableOpacity>

@@ -5,6 +5,7 @@ import Home from '../screens/Home';
 import Howto from '../screens/howto1';
 import Splash from '../screens/Splash';
 import Dashboard from '../screens/dashboard';
+import Decks from '../screens/Decks';
 const Stack = createNativeStackNavigator();
 
 const authNav = () => {
@@ -14,6 +15,7 @@ const authNav = () => {
           <Stack.Screen name="howto1" component={Howto} options={{headerShown:false}}/>
           <Stack.Screen name="Splash" component={Splash} options={{headerShown:false}}/>
           <Stack.Screen name="Dashboard" component={Dashboard} options={{headerShown:false}}/>
+          <Stack.Screen name="Decks" component={Decks} options={{headerShown:false}}/>
         </Stack.Navigator>
       );
 }
