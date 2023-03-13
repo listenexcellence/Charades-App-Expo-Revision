@@ -38,7 +38,7 @@ const Home = ({ navigation }) => {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.buttonCon}>
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity onPress={() => navigation.navigate('TiltHandler')} style={styles.button}>
                     <Image source={icon3} style={styles.iconImg} />
                         <Text style={styles.text}>Support</Text>
                     </TouchableOpacity>
