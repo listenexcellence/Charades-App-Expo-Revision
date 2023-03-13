@@ -7,6 +7,7 @@ import Splash from '../screens/Splash';
 import Dashboard from '../screens/dashboard';
 import Decks from '../screens/Decks';
 import TiltHandler from '../screens/TiltHandler';
+import Test from '../screens/test';
 const Stack = createNativeStackNavigator();
 
 const authNav = () => {
@@ -17,6 +18,7 @@ const authNav = () => {
           <Stack.Screen name="Splash" component={Splash} options={{headerShown:false}}/>
           <Stack.Screen name="Dashboard" component={Dashboard} options={{headerShown:false}}/>
           <Stack.Screen name="Decks" component={Decks} options={{headerShown:false}}/>
+          <Stack.Screen name="Test" component={Test} options={{headerShown:false}}/>
           <Stack.Screen name="TiltHandler" component={TiltHandler} options={{headerShown:false}}/>
         </Stack.Navigator>
       );

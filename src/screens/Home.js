@@ -26,31 +26,39 @@ const Home = ({ navigation }) => {
        <View style={styles.mid}>
                 <Image source={text} style={styles.mainText1}/>
         </View>
-           <View style={styles.container1}>
-                <View style={styles.buttonCon}>
+              <View style={styles.container1}>
+                   <View style={styles.buttonCon}>
                     <TouchableOpacity onPress={() => navigation.navigate('Decks')} style={styles.button}>
                       <Image source={icon} style={styles.iconImg} />
+                      <View style={styles.textContain}>
                         <Text style={styles.text}>Play Now</Text>
+                      </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => navigation.navigate('howto1')} style={styles.button}>
                     <Image source={icon2} style={styles.iconImg} />
+                    <View style={styles.textContain}>
                         <Text style={styles.text}>How To Play</Text>
+                    </View>
                     </TouchableOpacity>
-                </View>
-                <View style={styles.buttonCon}>
+                  </View>
+                  <View style={styles.buttonCon}>
                     <TouchableOpacity onPress={() => navigation.navigate('TiltHandler')} style={styles.button}>
-                    <Image source={icon3} style={styles.iconImg} />
+                      <Image source={icon3} style={styles.iconImg} />
+                      <View style={styles.textContain}>
                         <Text style={styles.text}>Support</Text>
+                    </View>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.button}>
                     <Image source={icon4} style={styles.iconImg} />
+                    <View style={styles.textContain}>
                         <Text style={styles.text}>Rate The Game</Text>
+                    </View>
                     </TouchableOpacity>
-                </View>
+                  </View> 
                 <View style={styles.container3}>
                   <Text style={styles.text1}>© 2023</Text>
                 </View>
-           </View>
+            </View>
             
     </ImageBackground>
   )
@@ -87,9 +95,10 @@ const styles = StyleSheet.create({
         display: 'flex',
         backgroundColor: '#D18A1A',
         borderColor: 'rgba(255, 250, 189, 0.6)',
-        borderWidth: '6px',
-        width: '46.5%',
+        borderWidth: 6,
+        width: '47.5%',
         paddingVertical: 10,
+        paddingHorizontal: 20,
         borderRadius: 15,
         alignItems: 'center',
         shadowColor: 'rgba(80, 80, 80, 0.18)',
@@ -98,7 +107,7 @@ const styles = StyleSheet.create({
         shadowRadius: 15 ,
         shadowOffset : { width: 1, height: 13},
         flexDirection: 'row',
-        justifyContent: 'space-evenly',
+        justifyContent: 'space-between'
       },
       mainText1: {
         resizeMode: 'contain',
@@ -109,8 +118,14 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontFamily: 'MontserratEBold',
         fontSize: 16,
-        fontWeight: 'bold',
         textTransform: 'uppercase',
+    },
+    textContain: {
+        paddingLeft: 0,
+        justifyContent: 'center',
+        flex: 1,
+        alignContent: 'center',
+        alignItems: 'center'
     },
     text1: {
       color: '#fff',

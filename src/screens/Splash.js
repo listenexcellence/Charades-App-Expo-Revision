@@ -34,7 +34,9 @@ const Splash = ({ navigation }) => {
             </View>
             <View style={styles.container1}>
             </View>
-            
+            <View style={styles.container3}>
+                  <Text style={styles.text1}>© 2023</Text>
+                </View>
         </ImageBackground>
       );
 }
@@ -47,6 +49,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         flex: 1,
+      },
+      container3: {
+        justifyContent: 'flex-end',
+        alignItems: 'flex-end',
+        paddingTop: 15,
+        width: '80%',
       },
       mid: {
         flex: 1,
@@ -75,4 +83,11 @@ const styles = StyleSheet.create({
         fontFamily: 'Montserrat',
         paddingBottom: 5,
       },
+      text1: {
+        color: '#fff',
+        fontFamily: 'MontserratBold',
+        fontSize: 15,
+        textTransform: 'uppercase',
+        opacity: 0.7,
+    },
 });
