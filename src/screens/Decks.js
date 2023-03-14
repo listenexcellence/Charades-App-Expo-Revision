@@ -1,10 +1,11 @@
-import { ImageBackground, StyleSheet, Text, View, Dimensions, TouchableOpacity, ScrollView, Image } from 'react-native'
+import { ImageBackground, StyleSheet, Text, View, Dimensions, TouchableOpacity, ScrollView, Image, FlatList } from 'react-native'
 import React from 'react'
 import { useFonts } from 'expo-font';
+import deckData from '../data/deckData';
 
 const {width, height} = Dimensions.get('screen');
 
-export default function Decks() {
+export default function Decks({navigation}) {
     const image = require('../../assets/backgroundGame.png');
     const side = require('../../assets/sidebar.png');
     const avatar = require('../../assets/avatar.png');
@@ -34,6 +35,18 @@ export default function Decks() {
       if (!loaded) {
         return null;
       }
+
+      const renderDecks = ({item}) => {
+        return(
+          <TouchableOpacity
+          onPress={() => navigation.navigate("Details", {item: item,})}
+          >
+            <Image style={styles.deckImageT} source={item
+            .image} />
+            <Text>{item.title}</Text>
+          </TouchableOpacity>
+        )
+      };
   return (
     <ImageBackground source={image} style={styles.container}>
         {/* The fisrt View */}
@@ -164,22 +177,33 @@ export default function Decks() {
                     </View>
                 </View>
                 {/* Premium decks, Available for a fee */}
-                <View style={styles.Mydecks}>
-                    <View style={styles.deckHead}>
+                    <View style={styles.Mydecks}>
+                      <View style={styles.deckHead}>
                         <Text style={styles.deckHeadText}>
                             Premium Decks
                         </Text>
                         <Text style={styles.deckHeadLink}>
                             See All
                         </Text>
-                    </View>
-                    <View style={styles.deckHead}>
+                      </View>
+                      <View style={styles.deckHead}>
                         <Image style={styles.deckImage} source={music}/>
                         <Image style={styles.deckImage} source={places}/>
                         <Image style={styles.deckImage} source={history}/>
                         <Image style={styles.deckImage} source={food}/>
+                      </View>
                     </View>
-                </View>
+                    <View>
+                      <FlatList 
+                      data={deckData}
+                      renderItem={renderDecks}
+                      keyExtractor={(item) => item.id}
+                      horizontal
+                      showsHorizontalScrollIndicator={false}
+                      />
+
+                      
+                    </View>
             </ScrollView>
         </View>
     </ImageBackground>
@@ -390,5 +414,10 @@ const styles = StyleSheet.create({
       deckImage: {
         width: 110,
         height: 150,
+      },
+      deckImageT: {
+        width: 110,
+        height: 150,
+        marginRight: 20,
       },
 })

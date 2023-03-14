@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Charades-App-Expo-Review",
-    "slug": "Charades-App-Expo-Review",
+    "slug": "charades-expo-app-review",
     "version": "1.0.0",
     "orientation": "landscape",
     "icon": "./assets/icon.png",
@@ -28,6 +28,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "c125433c-2ff6-4544-acd7-3cf6ed31ca14"
+      }
+    },
+    "owner": "starexcell"
   }
 }
