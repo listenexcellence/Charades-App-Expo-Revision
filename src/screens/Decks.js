@@ -1,29 +1,12 @@
-import { ImageBackground, StyleSheet, Text, View, Dimensions, TouchableOpacity, ScrollView, Image, FlatList } from 'react-native'
+import { ImageBackground, StyleSheet, Text, View, Dimensions, TouchableOpacity, ScrollView, Image, FlatList, useState, useEffect } from 'react-native'
 import React from 'react'
 import { useFonts } from 'expo-font';
 import deckData from '../data/deckData';
+import ImagesVariable from '../data/ImagesVariable';
 
 const {width, height} = Dimensions.get('screen');
 
 export default function Decks({navigation}) {
-    const image = require('../../assets/backgroundGame.png');
-    const side = require('../../assets/sidebar.png');
-    const avatar = require('../../assets/avatar.png');
-    const home = require('../../assets/homeIcon.png');
-    const premium = require('../../assets/premium.png');
-    const decks = require('../../assets/decks.png');
-    const profile = require('../../assets/profile.png');
-    const memories = require('../../assets/memories.png');
-    const ads = require('../../assets/ads.png');
-    const support = require('../../assets/sup.png');
-    const rate = require('../../assets/rate.png');
-    const text = require('../../assets/text1.png');
-    const coin = require('../../assets/coin.png');
-    const premAd = require('../../assets/premAD.png');
-    const music = require('../../assets/music.png');
-    const places = require('../../assets/places.png');
-    const history = require('../../assets/history.png');
-    const food = require('../../assets/food.png');
 
     const [loaded] = useFonts({
         Futura: require('./../../assets/fonts/futura.ttf'),
@@ -47,54 +30,64 @@ export default function Decks({navigation}) {
           </TouchableOpacity>
         )
       };
+      const renderDecksFree = ({item}) => {
+        return(
+          <TouchableOpacity
+          onPress={() => navigation.navigate("Details", {item: item,})}
+          >
+            <Image style={styles.deckImageT} source={item
+            .image} />
+          </TouchableOpacity>
+        )
+      };
   return (
-    <ImageBackground source={image} style={styles.container}>
+    <ImageBackground source={ImagesVariable.image} style={styles.container}>
         {/* The fisrt View */}
-        <ImageBackground source={side} style={styles.sidebar}>
+        <ImageBackground source={ImagesVariable.side} style={styles.sidebar}>
             <ScrollView>
                 <View style={styles.signInView}>
-                    <Image source={avatar} style={styles.signInImage} />
+                    <Image source={ImagesVariable.avatar} style={styles.signInImage} />
                     {/* This sign in text is just a placeholder for when the user logs in. His actual name/gamer tag is supposed to show here and avatar too */}
                     <Text style={styles.signInText}>Sign In</Text>
                 </View>
                 <View>
                     <Text style={styles.subText}>Main</Text>
                     <TouchableOpacity style={styles.touchableStuffActive}>
-                        <Image source={home} style={styles.Image} />
+                        <Image source={ImagesVariable.home} style={styles.Image} />
                         <Text style={styles.Text}>Home</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.touchableStuff}>
-                        <Image source={premium} style={styles.Image} />
+                        <Image source={ImagesVariable.premium} style={styles.Image} />
                         <Text style={styles.Text}>Premium</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.touchableStuff}>
-                        <Image source={decks} style={styles.Image} />
+                        <Image source={ImagesVariable.decks} style={styles.Image} />
                         <Text style={styles.Text}>My Decks</Text>
                     </TouchableOpacity>
                 </View>
                 <View>
                     <Text style={styles.subText}>Profile & You</Text>
                     <TouchableOpacity style={styles.touchableStuff}>
-                        <Image source={profile} style={styles.Image} />
+                        <Image source={ImagesVariable.profile} style={styles.Image} />
                         <Text style={styles.Text}>Profile</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.touchableStuff}>
-                        <Image source={memories} style={styles.Image} />
+                        <Image source={ImagesVariable.memories} style={styles.Image} />
                         <Text style={styles.Text}>Memories</Text>
                     </TouchableOpacity>
                 </View>
                 <View>
                     <Text style={styles.subText}>Extras</Text>
                     <TouchableOpacity style={styles.touchableStuff}>
-                        <Image source={ads} style={styles.Image} />
+                        <Image source={ImagesVariable.ads} style={styles.Image} />
                         <Text style={styles.Text}>No Ads</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.touchableStuff}>
-                        <Image source={support} style={styles.Image} />
+                        <Image source={ImagesVariable.support} style={styles.Image} />
                         <Text style={styles.Text}>Support</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.touchableStuff}>
-                        <Image source={rate} style={styles.Image} />
+                        <Image source={ImagesVariable.rate} style={styles.Image} />
                         <Text style={styles.Text}>Rate Us!</Text>
                     </TouchableOpacity>
                 </View>
@@ -110,15 +103,15 @@ export default function Decks({navigation}) {
             <ScrollView>
                 {/* The Fisrt Head View */}
                 <View style={styles.headView}>
-                    <Image style={styles.ImageHead} source={text} />
+                    <Image style={styles.ImageHead} source={ImagesVariable.text} />
                     <View style={styles.coinView}>
-                        <Image style={styles.Image2} source={coin} />
+                        <Image style={styles.Image2} source={ImagesVariable.coin} />
                         <Text style={styles.CoinText}>99999</Text>
                     </View>
                 </View>
                 {/* The image card View */}
                 <View style={styles.secondView}>
-                    <ImageBackground resizeMode='stretch' source={premAd} style={styles.ImageAd}>
+                    <ImageBackground resizeMode='stretch' source={ImagesVariable.premAd} style={styles.ImageAd}>
                         <Text style={styles.AdText}>
                             Collect & Play Our {"\n"}Exclusive Decks!
                         </Text>
@@ -169,12 +162,17 @@ export default function Decks({navigation}) {
                             See All
                         </Text>
                     </View>
-                    <View style={styles.deckHead}>
-                        <Image style={styles.deckImage} source={music}/>
-                        <Image style={styles.deckImage} source={places}/>
-                        <Image style={styles.deckImage} source={history}/>
-                        <Image style={styles.deckImage} source={food}/>
-                    </View>
+                      <View style={styles.deckHead}>
+                        <View>
+                          <FlatList 
+                          data={deckData}
+                          renderItem={renderDecksFree}
+                          keyExtractor={(item) => item.id}
+                          horizontal
+                          showsHorizontalScrollIndicator={false}
+                          />
+                        </View>
+                      </View>
                 </View>
                 {/* Premium decks, Available for a fee */}
                     <View style={styles.Mydecks}>
@@ -186,24 +184,19 @@ export default function Decks({navigation}) {
                             See All
                         </Text>
                       </View>
-                      <View style={styles.deckHead}>
-                        <Image style={styles.deckImage} source={music}/>
-                        <Image style={styles.deckImage} source={places}/>
-                        <Image style={styles.deckImage} source={history}/>
-                        <Image style={styles.deckImage} source={food}/>
-                      </View>
+                        <View style={styles.deckHead}>
+                          <View>
+                            <FlatList 
+                            data={deckData}
+                            renderItem={renderDecks}
+                            keyExtractor={(item) => item.id}
+                            horizontal
+                            showsHorizontalScrollIndicator={false}
+                            />                      
+                          </View>
+                        </View>
                     </View>
-                    <View>
-                      <FlatList 
-                      data={deckData}
-                      renderItem={renderDecks}
-                      keyExtractor={(item) => item.id}
-                      horizontal
-                      showsHorizontalScrollIndicator={false}
-                      />
-
-                      
-                    </View>
+                    
             </ScrollView>
         </View>
     </ImageBackground>

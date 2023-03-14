@@ -1,16 +1,12 @@
 import { ImageBackground, StyleSheet, Text, View, Image, TouchableOpacity, Alert, Dimensions } from 'react-native'
 import React from 'react'
 import { useFonts } from 'expo-font';
+import ImagesVariable from '../data/ImagesVariable';
 
 const {width, height} = Dimensions.get('screen');
 
 const Home = ({ navigation }) => {
-    const image = require('../../assets/backgroundd.png');
-    const text = require('../../assets/text1.png'); 
-    const icon = require('../../assets/play.png'); 
-    const icon2 = require('../../assets/howT.png'); 
-    const icon3 = require('../../assets/sup.png'); 
-    const icon4 = require('../../assets/rate.png'); 
+    const image = require('../../assets/backgroundd.png'); 
     const [loaded] = useFonts({
       Montserrat: require('./../../assets/fonts/Montserrat-Regular.ttf'),
       MontserratBold: require('./../../assets/fonts/Montserrat-Bold.ttf'),
@@ -24,18 +20,18 @@ const Home = ({ navigation }) => {
   return (
     <ImageBackground source={image} style={styles.container}>
        <View style={styles.mid}>
-                <Image source={text} style={styles.mainText1}/>
+                <Image source={ImagesVariable.text} style={styles.mainText1}/>
         </View>
               <View style={styles.container1}>
                    <View style={styles.buttonCon}>
                     <TouchableOpacity onPress={() => navigation.navigate('Decks')} style={styles.button}>
-                      <Image source={icon} style={styles.iconImg} />
+                      <Image source={ImagesVariable.icon} style={styles.iconImg} />
                       <View style={styles.textContain}>
                         <Text style={styles.text}>Play Now</Text>
                       </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => navigation.navigate('howto1')} style={styles.button}>
-                    <Image source={icon2} style={styles.iconImg} />
+                    <Image source={ImagesVariable.icon2} style={styles.iconImg} />
                     <View style={styles.textContain}>
                         <Text style={styles.text}>How To Play</Text>
                     </View>
@@ -43,13 +39,13 @@ const Home = ({ navigation }) => {
                   </View>
                   <View style={styles.buttonCon}>
                     <TouchableOpacity onPress={() => navigation.navigate('TiltHandler')} style={styles.button}>
-                      <Image source={icon3} style={styles.iconImg} />
+                      <Image source={ImagesVariable.icon3} style={styles.iconImg} />
                       <View style={styles.textContain}>
                         <Text style={styles.text}>Support</Text>
                     </View>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.button}>
-                    <Image source={icon4} style={styles.iconImg} />
+                    <Image source={ImagesVariable.icon4} style={styles.iconImg} />
                     <View style={styles.textContain}>
                         <Text style={styles.text}>Rate The Game</Text>
                     </View>
